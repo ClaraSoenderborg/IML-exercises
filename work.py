@@ -1,13 +1,20 @@
 import numpy as np
 
-v = np.array([3,2])
+X = np.array([
+    [1, 1, 1],
+    [1, 1, 2],
+    [1, 2, 2],
+    [1, 3, 4],
+    [1, 5, 3],
+    [1, 6, 2]
+])
 
-B1 = np.array([[1,0],[0,1]])
+y = np.array([1, 1, 1, -1, -1, -1]).T
 
-B2 = np.array([[1,1],[1,-1]])
+w = np.linalg.lstsq(X, y)[0]
 
-B3 = np.array([[2,1],[1,2]])
+print(w)
 
-print(np.linalg.inv(B1)@v)
-print(np.linalg.inv(B2)@v)
-print(np.linalg.inv(B3)@v)
+import matplotlib.pyplot as plt  
+
+plt.scatter(X[:,1], X[:,2])
